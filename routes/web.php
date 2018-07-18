@@ -15,12 +15,17 @@ Route::get('/', 'StaticPagesController@home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about');
 Route::get('signup', 'UsersController@create')->name('signup');
+
 Route::resource('users', 'UsersController');
+
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store')->name('login');
+Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
